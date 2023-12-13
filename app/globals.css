@@ -1,27 +1,82 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    background-color: rgb(39, 129, 255);
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+}
+
+#registerForm {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 50px 30px 50px;
+    border-radius: 10px;
+    width: 330px;
+    box-shadow: 2px 2px 5px 2px #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+#registerForm input {
+    margin-bottom: 20px;
+    width: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#registerForm button {
+    width: 325px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#registerForm p {
+    text-align: center;
+}
+
+.signUp {
+    background-color: rgb(0, 106, 255);
+    color: white;
+    border: none;
+}
+
+.signUp:hover {
+    background-color: rgb(0, 84, 202);
+    color: white;
+}
+
+.facebookLogin {
+    margin-top: 10px;
+    background-color: #3b5998;
+    color: white;
+    margin-bottom: 10px;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.facebookLogin:hover {
+    background-color: #2d4373;
+    color: white;
+}
+
+.googleLogin {
+    background-color: white;
+    color: #686767; 
+    border: 2px solid #ccc;
+}
+
+.googleLogin:hover {
+    background-color: rgb(239, 239, 239);
+    color: rgb(0, 0, 0);
 }
