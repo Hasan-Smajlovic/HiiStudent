@@ -1,65 +1,19 @@
 "use client";
-import React, { useState } from "react";
-import "./globals.css";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import IndexPage from "./components/IndexPage";
+import Register from "./components/RegisterForm";
 
-/* @client */
-function Register() {
-  const [isRegister, setIsRegister] = useState(true);
-
+function App() {
   return (
-    <div>
-      <form>
-        <div id="registerForm">
-          <h1>{isRegister ? "Register" : "Login"}</h1>
-          {isRegister && (
-            <>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                placeholder="Full Name"
-              />
-              <input
-                type="password"
-                id="confirmPassword"
-                placeholder="Confirm Password"
-              />
-            </>
-          )}
-          <input type="text" id="email" placeholder="Email" />
-          <input type="password" id="password" placeholder="Password" />
-          <button
-            className="signUp"
-            type="button"
-            onClick={() => setIsRegister(!isRegister)}
-          >
-            {isRegister ? "Sign up" : "Login"}
-          </button>
-          <p>
-            {isRegister
-              ? "Already have an account? "
-              : "Don't have an account? "}
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsRegister(!isRegister);
-              }}
-            >
-              {isRegister ? "Log in" : "Register"}
-            </a>
-          </p>
-          <hr />
-          <button className="facebookLogin" type="button">
-            Login with Facebook
-          </button>
-          <button className="googleLogin" type="button">
-            Login with Google
-          </button>
-        </div>
-      </form>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/register" element={<Register />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
   );
 }
 
-export default Register;
+export default App;

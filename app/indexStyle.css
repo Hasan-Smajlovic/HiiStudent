@@ -1,0 +1,35 @@
+.navBar {
+    max-width: 100%;
+    height: 100%;
+    background-color: #171819;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+  .navTitle {
+    margin: 10px;
+  }
+  
+  .navList {
+    list-style-type: none;
+    display: flex;
+  }
+
+  .navList li {
+    margin-right: 20px;
+    font-size: 18px;
+    transition: color 0.5s;
+    margin-right: 1.5rem;
+  }
+
+  .navList li:hover {
+    color: #63bce9;
+  }
+  
+  .navList li:last-child {
+    margin-right: 20px;
+  }
+  
