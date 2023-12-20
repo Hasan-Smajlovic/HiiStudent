@@ -9,7 +9,7 @@ function Register() {
     <div>
       <form>
         <div id="registerForm">
-          <h1>{isRegister ? "Register" : "Login"}</h1>
+          <h1>{isRegister ? "Sign up" : "Login"}</h1>
           {isRegister && (
             <>
               <input
@@ -45,7 +45,7 @@ function Register() {
                 setIsRegister(!isRegister);
               }}
             >
-              {isRegister ? "Log in" : "Register"}
+              {isRegister ? "Log in" : "Sign up"}
             </a>
           </p>
           <hr />

@@ -1,0 +1,46 @@
+#jobList {
+    margin: 200px 40px 100px 40px;
+    text-align: center;
+}
+
+#jobList h1 {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 40px;
+}
+
+.jobBoxes {
+    max-width: 20%;
+    max-height: 50%;
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #333;
+}
+
+.jobBoxes img {
+    margin-top: 20px;
+    max-width: 200px;
+}
+.jobBoxes p {
+    margin: 20px 0px 20px 0px;
+}
+
+.jobBoxes button {
+    padding: 10px 5px 10px 5px;
+    border-radius: 10px;
+    background-color: #4CAF50;
+}
+
+.browseButton {
+    padding: 10px 5px 10px 5px;
+    margin-top: 40px;
+    min-width: 100px;
+}

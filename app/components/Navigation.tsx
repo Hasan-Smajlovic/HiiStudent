@@ -2,10 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../indexStyle.css";
 
-function IndexPage() {
+function Navigation() {
   return (
     <div className="navBar">
-      <h1 className="navTitle">HiiStudent</h1>
+      <h1>
+        <Link
+          to="#"
+          className="navTitle"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          HiiStudent
+        </Link>
+      </h1>
       <ol className="navList">
         <li>
           <Link
@@ -45,4 +53,4 @@ function IndexPage() {
   );
 }
 
-export default IndexPage;
+export default Navigation;
