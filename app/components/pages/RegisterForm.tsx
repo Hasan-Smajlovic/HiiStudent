@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "../registerStyle.css";
+import "../assets/styles/RegisterStyle.css";
 
 function Register() {
   const [isRegister, setIsRegister] = useState(true);

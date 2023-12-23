@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import Register from "./components/RegisterForm";
-import HomePage from "./components/HomePage";
-import Jobs from "./components/Jobs";
+import Navigation from "./components/pages/Navigation";
+import Register from "./components/pages/RegisterForm";
+import HomePage from "./components/pages/HomePage";
+import Jobs from "./components/pages/Jobs";
 
 const HomeLayout = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import photo from "../52383978.jpg";
-import "../JobsStyle.css";
+import photo from "../assets/photos/52383978.jpg";
+import "../assets/styles/JobsStyle.css";
 
 function JobList() {
   return (

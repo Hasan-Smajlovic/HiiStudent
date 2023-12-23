@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../indexStyle.css";
+import "../assets/styles/NavigationStyle.css";
 
 function Navigation() {
   return (
