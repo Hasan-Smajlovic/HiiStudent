@@ -1,26 +1,27 @@
 import React from "react";
-import "../assets/styles/HomeStyle.css";
+import "../assets/styles/HomeStyle.css"; // Import the styles
 
-function Home() {
+const HomePage = () => {
   return (
     <section id="home">
-      <div className="home">
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <button className="homeButton" type="button">
-          Find out more!
-        </button>
+      <div className="homePage">
+        <h1>
+          {" "}
+          Welcome, <br></br> Find the most exciting jobs for You!
+        </h1>
+        <div className="homePageElements">
+          <input type="text" placeholder="Job Title or Keyword"></input>
+          <select title="Location">
+            <option value="Sarajevo">Sarajevo</option>
+            <option value="Visoko">Visoko</option>
+            <option value="Tuzla">Tuzla</option>
+            <option value="Ilijaš">Ilijaš</option>
+          </select>
+          <button type="button"> Find Job</button>
+        </div>
       </div>
     </section>
   );
-}
+};
 
-export default Home;
+export default HomePage;

@@ -12,7 +12,7 @@
   .navTitle {
     margin: 10px;
   }
-  
+
   .navList {
     list-style-type: none;
     display: flex;
@@ -20,16 +20,14 @@
 
   .navList li {
     margin-right: 20px;
+    margin-top: 15px;
     font-size: 18px;
     transition: color 0.5s;
-    margin-right: 1.5rem;
   }
 
   .navList li:hover {
     color: #63bce9;
   }
-  
   .navList li:last-child {
     margin-right: 20px;
   }
-  

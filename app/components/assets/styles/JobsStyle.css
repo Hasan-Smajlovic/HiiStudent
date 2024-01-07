@@ -1,46 +1,57 @@
-#jobList {
-    margin: 200px 40px 100px 40px;
+#jobs {
+    margin: 300px 40px 0px 40px;
     text-align: center;
 }
 
-#jobList h1 {
+#jobs h1 {
+    font-size: 2rem;
     text-align: center;
     margin-bottom: 60px;
 }
 
-.container {
+.jobList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 40px;
+    justify-content: center;
+    margin-bottom: 60px;
 }
 
-.jobBoxes {
-    max-width: 20%;
-    max-height: 50%;
-    border: 2px solid black;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px 0px #333;
+.jobElements {
+    max-width: 100px;
+    padding: 50px;
+    margin: 20px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.jobBoxes img {
-    margin-top: 20px;
-    max-width: 200px;
+.jobElements:hover {
+    color: #63bce9;
+    box-shadow: 0px 0px 10px 0px rgb(174, 174, 174);
+    background-color: white;
+    transition: color 1s, box-shadow 0.5s, background-color 0.5s;
 }
-.jobBoxes p {
+
+.jobElements h3 {
     margin: 20px 0px 20px 0px;
 }
 
-.jobBoxes button {
-    padding: 10px 5px 10px 5px;
-    border-radius: 10px;
-    background-color: #4CAF50;
+.icon {
+    size: 100px;
 }
 
-.browseButton {
-    padding: 10px 5px 10px 5px;
-    margin-top: 40px;
-    min-width: 100px;
+#categoriesBtn{
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px;
+    background-color: whitesmoke;
+    border: 1px solid #63bce9;
+    border-radius: 5px;
+    color: #63bce9;
+}
+
+#categoriesBtn:hover{
+    background-color: #63bce9;
+    color: white;
+    transition: background-color 0.5s linear, color 0.5s;
 }

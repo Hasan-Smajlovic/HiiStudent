@@ -1,0 +1,32 @@
+#CVPage {
+    margin: 100px 0px 100px 0px;
+    border: 1px solid black;
+}
+
+.CVPageElements {
+    text-align: center;
+    background-color: rgba(31,43,123,0.8);
+    padding: 100px 0px 100px 0px;
+    color:white
+}
+
+.CVPageElements h1 {
+    font-size: 3rem;
+}
+
+.CVPageElements button {
+    margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background: transparent;
+    border: 1px solid #8b92dd;
+    border-radius: 5px;
+    color: #8b92dd;
+}
+
+.CVPageElements button:hover {
+    background-color: #8b92dd;
+    color: white;
+    transition: background-color 1s, color 1s;
+}
+
