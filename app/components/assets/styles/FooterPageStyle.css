@@ -1,0 +1,42 @@
+#footerPage {
+    padding: 80px 100px 40px 100px;
+    background-color: #171819;
+    color: white;
+}
+
+.footerPageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.about {
+    max-width: 200px;
+}
+
+.links {
+    text-align: center;
+}
+
+.sendEmail {
+    max-width: 220px;
+}
+
+.sendEmail input{
+    margin-top: 20px;
+    width: 120px;
+    padding: 10px;
+    border-radius: 5px 0px 0px 5px;
+    outline: none;
+    border: none;
+}
+
+.sendEmail button {
+    background-color: #63bce9;
+    width: 50px;
+    padding: 10px;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    cursor: pointer;
+}
+

@@ -1,0 +1,31 @@
+#aboutUs {
+    padding: 100px;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.aboutUsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0px 30px 0px;
+}
+
+.aboutUsText {
+    margin-top: 20px;
+    max-width: 500px;
+    font-size: 1.2rem;
+}
+
+.quoteBox {
+    background-color: #e8bda1;
+    padding:30px;
+    margin: 0px 0px 20px 0px;
+    border-radius: 5px;
+}
+
+.quoteBox p {
+margin: 10px 0px 10px 0px;
+}
