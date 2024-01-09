@@ -16,6 +16,7 @@ import {
   faSignHanging,
   faWindowMaximize,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const element = <FontAwesomeIcon icon={faCoffee} />;
 
@@ -65,9 +66,9 @@ function JobList() {
           <h3>Game Developer</h3>
         </div>
       </div>
-      <button id="categoriesBtn" type="button">
+      <Link id="categoriesBtn" to={"./browseJobs"}>
         BROWSE ALL CATEGORIES
-      </button>
+      </Link>
     </section>
   );
 }
