@@ -86,3 +86,64 @@ exports.logoutUser = async (req, res) => {
       .json({ message: "An error occurred during logout.", error });
   }
 };
+
+exports.getInternshipsBih = async (req, res) => {
+  try {
+    const announcements = await Announcement.findAll({ where: { location: 'bih', type: 'internship'}})
+    if (!announcements) {
+      return res.status(204).json({ message: "No available internships in BiH" });
+  }
+    return res
+      .status(200)
+      .json({ message: "Internships in BiH sent succesfully", announcements });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "An error occurred while sending internhips in BiH", error });
+  }
+};
+
+exports.getInternshipsEurope = async (req, res) => {
+  try {
+    const announcements = await Announcement.findAll({ where: { location: 'europe', type: 'internship'}})
+    if (!announcements) {
+      return res.status(204).json({ message: "No available internships in Europe" });
+  }
+    return res
+      .status(200)
+      .json({ message: "Internships in Europe sent succesfully", announcements });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "An error occurred while sending internhips in Europe", error });
+  }
+};
+
+exports.getJobsBih = async (req, res) => {
+  try {
+    const announcements = await Announcement.findAll({ where: { location: 'bih', type: 'job'}})
+    if (!announcements) {
+      return res.status(204).json({ message: "No available jobs in BiH" });
+  }
+    return res
+      .status(200)
+      .json({ message: "Jobs in BiH sent succesfully", announcements });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "An error occurred while sending jobs in BiH", error });
+  }
+};
+
+exports.getJobsEurope = async (req, res) => {
+  try {
+    const announcements = await Announcement.findAll({ where: { location: 'europe', type: 'job'}})
+    if (!announcements) {
+      return res.status(204).json({ message: "No available jobs in Europe" });
+  }
+    return res
+      .status(200)
+      .json({ message: "Jobs in Europe sent succesfully", announcements });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "An error occurred while sending jobs in Europe", error });
+  }
+};
+
