@@ -1,5 +1,9 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const Announcement = require('../models/announcement');
+const Employer = require('../models/employer');
+const Student = require('../models/student');
+const Application = require('../models/application');
 
 exports.signupUser = async (req, res) => {
   try {
