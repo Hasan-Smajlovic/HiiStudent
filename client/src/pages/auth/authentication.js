@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AuthPage.css";
+import { register } from "../../services/register";
+import { login } from "../../services/login";
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -14,21 +16,40 @@ export default function AuthPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!isLogin && password !== confirmPassword) {
-      return setError("Passwords do not match");
+    if (isLogin){
+      if (!email || !password) {
+        setError("Email and password are required.");
+        return;
+      }
+      try {
+        const userData = { email, password };
+        await login(userData);
+        setEmail("");
+        setPassword("");
+        navigate("/");
+      } catch (error) {
+        setError(error.message || "An error occurred while logging in.");
+      }
     }
-
-    try {
-      const userData = {
-        email,
-        userType,
-        token: "mock-token-" + Math.random().toString(36).substring(2),
-      };
-
-      localStorage.setItem("user", JSON.stringify(userData));
-      navigate(userType === "student" ? "/dashboard" : "/company/dashboard");
-    } catch (err) {
-      setError(err.message || "Authentication failed");
+    else{
+      if (password !== confirmPassword) {
+        setError("Passwords do not match.");
+        return;
+      }
+      else{
+        try {
+      const userData = { email, password, confirmPassword, userType };
+      await register(userData);
+      setIsLogin(true);
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      
+    } catch (error) {
+      setError(error.message || "An error occurred while signing up.");
+    }
+      } 
+      
     }
   };
 
@@ -110,11 +131,11 @@ export default function AuthPage() {
                       type="radio"
                       className="auth-radio"
                       name="userType"
-                      value="company"
-                      checked={userType === "company"}
-                      onChange={() => setUserType("company")}
+                      value="employer"
+                      checked={userType === "employer"}
+                      onChange={() => setUserType("employer")}
                     />
-                    <span className="ml-2 text-gray-700">Company</span>
+                    <span className="ml-2 text-gray-700">Employer</span>
                   </label>
                 </div>
               </div>

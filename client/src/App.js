@@ -9,13 +9,17 @@ import EuropeJobsPage from "./pages/jobs/bosnianJobsPage"; // Create this
 import EuropeInternshipsPage from "./pages/internships/bosniaInternship"; // Create this
 import AboutPage from "./pages/about/aboutPage";
 import ContactPage from "./pages/contact/contactPage";
+import Login from "./pages/auth/login";
+import Signup from "./pages/auth/signup";
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/bosnia" element={<BosniaPage />} />
         <Route path="/bosnia/jobs" element={<BosniaJobsPage />} />
         <Route path="/bosnia/internships" element={<BosniaInternshipsPage />} />

@@ -1,14 +1,15 @@
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const Announcement = require('../models/announcement');
-const Employer = require('../models/employer');
-const Student = require('../models/student');
-const Application = require('../models/application');
+const Announcement = require("../models/announcement");
+const Employer = require("../models/employer");
+const Student = require("../models/student");
+const Application = require("../models/application");
 
 exports.signupUser = async (req, res) => {
   try {
-    const { email, password, passwordConfirmation } = req.body;
-    if (!email || !password || !passwordConfirmation) {
+    const { email, password, passwordConfirmation, userType } = req.body;
+    if (!email || !password || !passwordConfirmation || !userType) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
@@ -28,6 +29,7 @@ exports.signupUser = async (req, res) => {
     const user = await User.create({
       email: email,
       password: hashedPassword,
+      role: userType,
     });
 
     return res
@@ -72,7 +74,10 @@ exports.loginUser = async (req, res) => {
       message: "Logged in successfully",
       user: { id: user.id, email: user.email, role: user.role },
     });
-  } catch (error) {}
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Server error during login" });
+  }
 };
 
 exports.logoutUser = async (req, res) => {
@@ -91,63 +96,97 @@ exports.logoutUser = async (req, res) => {
   }
 };
 
+exports.authCheck = async (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
+  
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) return res.status(403).json({ message: "Forbidden" });
+      res.json({user: decoded});
+      next();
+    });
+  };
+
 exports.getInternshipsBih = async (req, res) => {
   try {
-    const announcements = await Announcement.findAll({ where: { location: 'bih', type: 'internship'}})
+    const announcements = await Announcement.findAll({
+      where: { location: "bih", type: "internship" },
+    });
     if (!announcements) {
-      return res.status(204).json({ message: "No available internships in BiH" });
-  }
+      return res
+        .status(204)
+        .json({ message: "No available internships in BiH" });
+    }
     return res
       .status(200)
       .json({ message: "Internships in BiH sent succesfully", announcements });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "An error occurred while sending internhips in BiH", error });
+    return res.status(500).json({
+      message: "An error occurred while sending internhips in BiH",
+      error,
+    });
   }
 };
 
 exports.getInternshipsEurope = async (req, res) => {
   try {
-    const announcements = await Announcement.findAll({ where: { location: 'europe', type: 'internship'}})
+    const announcements = await Announcement.findAll({
+      where: { location: "europe", type: "internship" },
+    });
     if (!announcements) {
-      return res.status(204).json({ message: "No available internships in Europe" });
-  }
-    return res
-      .status(200)
-      .json({ message: "Internships in Europe sent succesfully", announcements });
+      return res
+        .status(204)
+        .json({ message: "No available internships in Europe" });
+    }
+    return res.status(200).json({
+      message: "Internships in Europe sent succesfully",
+      announcements,
+    });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "An error occurred while sending internhips in Europe", error });
+    return res.status(500).json({
+      message: "An error occurred while sending internhips in Europe",
+      error,
+    });
   }
 };
 
 exports.getJobsBih = async (req, res) => {
   try {
-    const announcements = await Announcement.findAll({ where: { location: 'bih', type: 'job'}})
+    const announcements = await Announcement.findAll({
+      where: { location: "bih", type: "job" },
+    });
     if (!announcements) {
       return res.status(204).json({ message: "No available jobs in BiH" });
-  }
+    }
     return res
       .status(200)
       .json({ message: "Jobs in BiH sent succesfully", announcements });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "An error occurred while sending jobs in BiH", error });
+    return res
+      .status(500)
+      .json({ message: "An error occurred while sending jobs in BiH", error });
   }
 };
 
 exports.getJobsEurope = async (req, res) => {
   try {
-    const announcements = await Announcement.findAll({ where: { location: 'europe', type: 'job'}})
+    const announcements = await Announcement.findAll({
+      where: { location: "europe", type: "job" },
+    });
     if (!announcements) {
       return res.status(204).json({ message: "No available jobs in Europe" });
-  }
+    }
     return res
       .status(200)
       .json({ message: "Jobs in Europe sent succesfully", announcements });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "An error occurred while sending jobs in Europe", error });
+    return res.status(500).json({
+      message: "An error occurred while sending jobs in Europe",
+      error,
+    });
   }
 };
-

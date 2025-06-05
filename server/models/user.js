@@ -20,16 +20,16 @@ const User = sequelize.define("user", {
 
   name: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
 
   surname: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   role: {
     type: DataTypes.ENUM,
-    defaultValue: "employer", // Default role
+    defaultValue: "student", // Default role
     values: ["student", "employer"],
   },
 });

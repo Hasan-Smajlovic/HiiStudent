@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("../util/database");
+const sequelize = require("../config/database");
 
 const Employer = sequelize.define(
   "Employer",
@@ -18,6 +18,10 @@ const Employer = sequelize.define(
       },
     },
     company: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
     },

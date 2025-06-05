@@ -8,5 +8,7 @@ router.post('/login', controller.loginUser);
 
 router.post('/logout', controller.logoutUser);
 
+router.get('/auth-check', controller.authCheck);
+
 
 module.exports = router;
