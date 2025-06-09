@@ -97,15 +97,15 @@ exports.logoutUser = async (req, res) => {
 };
 
 exports.authCheck = async (req, res, next) => {
-    const token = req.cookies.token;
-    if (!token) return res.status(401).json({ message: "Unauthorized" });
-  
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-      if (err) return res.status(403).json({ message: "Forbidden" });
-      res.json({user: decoded});
-      next();
-    });
-  };
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) return res.status(403).json({ message: "Forbidden" });
+    res.json({ user: decoded });
+    next();
+  });
+};
 
 exports.getInternshipsBih = async (req, res) => {
   try {
@@ -117,9 +117,7 @@ exports.getInternshipsBih = async (req, res) => {
         .status(204)
         .json({ message: "No available internships in BiH" });
     }
-    return res
-      .status(200)
-      .json({ message: "Internships in BiH sent succesfully", announcements });
+    return res.status(200).json(announcements);
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -151,6 +149,23 @@ exports.getInternshipsEurope = async (req, res) => {
     });
   }
 };
+
+exports.getAnnouncements = async (req, res) => {
+  try {
+    const announcements = await Announcement.findAll();
+    if (!announcements) {
+      return res.status(204).json({ message: "No announcements found" });
+    }
+    return res.status(200).json(
+      announcements,
+    );
+  } catch (error) {
+    console.error(error);
+    return res
+      .status(500)
+      .json({ message: "An error occurred while sending announcements", error });
+  }
+}
 
 exports.getJobsBih = async (req, res) => {
   try {

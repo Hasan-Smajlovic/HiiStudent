@@ -2,71 +2,28 @@ import { Link } from "react-router-dom";
 import Navbar from "../../../components/navbar";
 import Footer from "../../../components/footer";
 import "./bosniaPage.css";
-
-// Mock data - replace with actual API calls
-const jobListings = [
-  {
-    id: 1,
-    title: "Frontend Developer",
-    company: "TechSolutions BH",
-    location: "Sarajevo",
-    type: "Full-time",
-    posted: "2 days ago",
-    description:
-      "We're looking for a skilled frontend developer with React experience.",
-  },
-  {
-    id: 2,
-    title: "Marketing Specialist",
-    company: "Adverta",
-    location: "Banja Luka",
-    type: "Part-time",
-    posted: "1 week ago",
-    description: "Join our marketing team to help grow our client base.",
-  },
-  {
-    id: 3,
-    title: "Data Analyst",
-    company: "BH Analytics",
-    location: "Mostar",
-    type: "Full-time",
-    posted: "3 days ago",
-    description: "Analyze business data and provide insights to our clients.",
-  },
-];
-
-const internshipListings = [
-  {
-    id: 1,
-    title: "Software Engineering Intern",
-    company: "Softhouse BH",
-    location: "Sarajevo",
-    duration: "3 months",
-    posted: "5 days ago",
-    description:
-      "Learn from our senior engineers while working on real projects.",
-  },
-  {
-    id: 2,
-    title: "Marketing Intern",
-    company: "Digital BH",
-    location: "Tuzla",
-    duration: "2 months",
-    posted: "1 week ago",
-    description: "Gain hands-on experience in digital marketing campaigns.",
-  },
-  {
-    id: 3,
-    title: "Finance Intern",
-    company: "BH Bank",
-    location: "Zenica",
-    duration: "6 months",
-    posted: "2 days ago",
-    description: "Assist our finance team with daily operations and reporting.",
-  },
-];
+import { useState, useEffect } from "react";
+import { getAnnouncements } from "../../../services/getAnnouncements";
 
 export default function BosniaPage() {
+  const [announcements, setAnnouncements] = useState([]);
+
+  useEffect(() => {
+    const getInternships = async () => {
+      const internships = await getAnnouncements();
+      setAnnouncements(internships);
+    };
+    getInternships();
+  }, [setAnnouncements]);
+
+  const intern = announcements.filter(
+    (internships) =>
+      internships.type === "internship" && internships.location === "bih"
+  );
+  const jobs = announcements.filter(
+    (jobs) => jobs.type === "job" && jobs.location === "bih"
+  );
+
   return (
     <div className="bosnia-page">
       <Navbar />
@@ -88,7 +45,7 @@ export default function BosniaPage() {
           </div>
 
           <div className="listings-grid">
-            {jobListings.slice(0, 3).map((job) => (
+            {jobs.map((job) => (
               <div key={job.id} className="listing-card">
                 <h3 className="listing-title">{job.title}</h3>
                 <div className="listing-meta">
@@ -120,7 +77,7 @@ export default function BosniaPage() {
           </div>
 
           <div className="listings-grid">
-            {internshipListings.slice(0, 3).map((internship) => (
+            {intern.map((internship) => (
               <div key={internship.id} className="listing-card">
                 <h3 className="listing-title">{internship.title}</h3>
                 <div className="listing-meta">
@@ -133,7 +90,7 @@ export default function BosniaPage() {
                 <p className="listing-description">{internship.description}</p>
                 <div className="listing-footer">
                   <span className="listing-posted">
-                    Posted: {internship.posted}
+                    Posted: {internship.createdAt}
                   </span>
                   <Link
                     to={`/bosnia/internships/${internship.id}`}

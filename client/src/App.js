@@ -11,6 +11,7 @@ import AboutPage from "./pages/about/aboutPage";
 import ContactPage from "./pages/contact/contactPage";
 import Login from "./pages/auth/login";
 import Signup from "./pages/auth/signup";
+import Profile from "./pages/profile/profile";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/bosnia" element={<BosniaPage />} />
         <Route path="/bosnia/jobs" element={<BosniaJobsPage />} />
         <Route path="/bosnia/internships" element={<BosniaInternshipsPage />} />

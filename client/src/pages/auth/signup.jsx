@@ -23,6 +23,7 @@ function Signup() {
     setIsLoading(true);
     try {
       const userData = { email, password, passwordConfirmation, userType };
+      console.log("User data:", userData);
       await register(userData);
       navigate("/login");
     } catch (error) {

@@ -5,7 +5,7 @@ import { AuthContext } from "../services/AuthContext";
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate("/login");
@@ -28,37 +28,27 @@ export default function Navbar() {
           <Link to="/bosnia" className="navbar-link">
             Bosnia & Herzegovina
           </Link>
-          <Link to="/europe" className="navbar-link">
+          <Link to="/europe" className="navbar-link" onClick={logout}>
             Europe
           </Link>
           {user ? (
-            <div className="flex items-center space-x-4">
-              <span className="text-smash-black font-medium">{user.name}</span>
-              <button
-                type="button"
-                onClick={logout}
-                className="bg-smash-black text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-colors shadow-custom"
-              >
+            <>
+            <Link to="/profile" className="navbar-link">
+                Profile
+              </Link>
+              <Link className="navbar-link" onClick={logout}>
                 Logout
-              </button>
-            </div>
+              </Link>
+            </>
           ) : (
-            <div className="flex items-center space-x-3">
-              <button
-                type="button"
-                onClick={handleLogin}
-                className="bg-smash-black text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-colors shadow-custom"
-              >
+            <>
+              <Link to="/login" className="navbar-link" onClick={handleLogin}>
                 Login
-              </button>
-              <button
-                type="button"
-                onClick={handleSignup}
-                className="bg-transparent border-2 border-smash-black text-smash-black px-4 py-2 rounded-lg hover:bg-smash-black hover:text-white transition-colors shadow-custom"
-              >
-                Register
-              </button>
-            </div>
+              </Link>
+              <Link to="/signup" className="navbar-link" onClick={handleSignup}>
+                Signup
+              </Link>
+            </>
           )}
         </div>
       </div>
