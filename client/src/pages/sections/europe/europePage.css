@@ -1,139 +1,384 @@
+/* Base Styles */
 .europe-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f8f9fa;
+  color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
 }
 
 .europe-main {
   flex: 1;
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
 }
 
-.europe-header {
+/* Hero Section */
+.europe-hero {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.8) 0%, rgba(42, 82, 152, 0.8) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 0.75rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background-color: #fff;
+  color: #1e3c72;
+}
+
+.cta-button.primary:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-button.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Opportunities Section */
+.opportunities-section {
+  padding: 5rem 0;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.europe-title {
+.section-title {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #1e3c72;
   margin-bottom: 0.5rem;
 }
 
-.europe-subtitle {
-  font-size: 1.125rem;
-  color: #4b5563;
+.section-description {
+  color: #666;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
 }
 
-/* Listings Section - Can reuse Bosnia styles with different accent colors */
-.listings-section {
-  margin-bottom: 4rem;
-}
-
-.listings-header {
-  display: flex;
-  justify-content: space-between;
+.see-all-link {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.75rem;
-}
-
-.listings-title {
-  font-size: 1.5rem;
+  color: #1e3c72;
   font-weight: 600;
-  color: #1f2937;
-}
-
-.see-more-link {
-  color: #2563eb;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.see-more-link:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-}
-
-/* Listings Grid */
-.listings-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .listings-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .listings-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Listing Card */
-.listing-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
   transition: all 0.3s ease;
 }
 
-.listing-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+.see-all-link:hover {
+  color: #2a5298;
 }
 
-.listing-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.75rem;
+.see-all-link .arrow {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
-.listing-meta {
+.see-all-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/* Opportunity Card */
+.opportunity-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  flex-direction: column;
+  position: relative;
+}
+
+.opportunity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #1e3c72;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #e9ecef;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3c72;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.job-meta {
+  flex: 1;
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.company-name {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.job-location {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 0.9rem;
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  color: #6b7280;
 }
 
-.listing-description {
-  color: #4b5563;
-  line-height: 1.5;
+.location-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  margin-right: 0.5rem;
+}
+
+.job-description {
+  color: #666;
   margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.listing-footer {
+.card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.875rem;
 }
 
-.listing-posted {
-  color: #6b7280;
+.posted-date {
+  font-size: 0.8rem;
+  color: #6c757d;
 }
 
-.view-details-link {
-  color: #2563eb;
+.view-details-button {
+  padding: 0.5rem 1.25rem;
+  background-color: #1e3c72;
+  color: white;
+  border-radius: 5px;
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.2s;
+  transition: all 0.3s ease;
 }
 
-.view-details-link:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
+.view-details-button:hover {
+  background-color: #2a5298;
+  transform: translateY(-2px);
+}
+
+/* Europe Highlights Section */
+.europe-highlights {
+  padding: 5rem 0;
+  background-color: #f5f7fa;
+}
+
+.highlights-title {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin-bottom: 3rem;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.highlight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+}
+
+.highlight-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.highlight-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.highlight-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 1rem;
+  }
+  
+  .opportunities-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title, .highlights-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .europe-hero {
+    height: 400px;
+  }
+  
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .company-logo {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
 }
